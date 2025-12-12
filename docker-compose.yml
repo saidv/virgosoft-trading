@@ -27,8 +27,8 @@ services:
   # Nginx
   webserver:
     build:
-      context: ./infra
-      dockerfile: nginx/Dockerfile
+      context: ./infra/nginx/backend
+      dockerfile: Dockerfile
     container_name: trading-webserver
     restart: unless-stopped
     ports:
@@ -47,10 +47,12 @@ services:
     restart: unless-stopped
     ports:
       - "5432:5432"
+    env_file:
+      - ./backend/.env
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE:-trading_platform}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
@@ -83,17 +85,13 @@ services:
   frontend:
     container_name: trading-frontend
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: frontend/Dockerfile
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - "5173:80"
     networks:
       - trading-network
     restart: unless-stopped
-    command: sh -c "npm install && npm run dev"
 
 networks:
   trading-network:

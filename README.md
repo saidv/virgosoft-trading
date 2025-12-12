@@ -21,8 +21,6 @@
 
 ## 🎯 Overview
 
-This is a **Full Stack Trading Platform** designed to assess comprehensive development skills in:
-
 - **Backend**: Laravel API with financial data integrity and concurrency safety
 - **Frontend**: Vue.js SPA with real-time updates and responsive design
 - **Database**: Scalable balance/asset management with proper indexing

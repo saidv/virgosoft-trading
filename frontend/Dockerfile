@@ -1,20 +1,43 @@
-# Use an official Node.js runtime as a parent image
-FROM node:20-alpine
-
-# Set the working directory in the container
+# ==========================================
+# Stage 1: Base (Common dependencies)
+# ==========================================
+FROM node:20-alpine as base
 WORKDIR /app
+COPY frontend/package*.json ./
 
-# Copy package.json and package-lock.json to leverage Docker cache
-COPY package*.json ./
-
-# Install application dependencies
+# ==========================================
+# Stage 2: Development (Hot-reloading)
+# ==========================================
+FROM base as dev
+# Install all dependencies (including devDependencies)
 RUN npm install
-
-# Copy the rest of the application's source code into the container
-COPY . .
-
-# Expose the port Vite runs on
+# Copy source code
+COPY frontend/ .
+# Expose Vite port
 EXPOSE 5173
+# Run dev server
+CMD ["npm", "run", "dev", "--", "--host"]
 
-# The command to run the development server
-CMD ["npm", "run", "dev"]
+# ==========================================
+# Stage 3: Builder (Compiles for Production)
+# ==========================================
+FROM base as builder
+# Install dependencies (clean install)
+RUN npm ci
+# Copy source code
+COPY frontend/ .
+# Build the application (outputs to /app/dist)
+RUN npm run build
+
+# ==========================================
+# Stage 4: Production (Nginx Server)
+# ==========================================
+FROM nginx:stable-alpine as production
+# Copy built assets from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy custom Nginx config
+COPY infra/nginx/frontend/nginx.conf /etc/nginx/conf.d/default.conf
+# Expose HTTP port
+EXPOSE 80
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
