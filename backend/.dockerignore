@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Dependencies (will be installed in build)
+/vendor
+/node_modules
+
+# Environment files (use docker env vars)
+.env
+.env.*
+!.env.example
+
+# Cache and logs
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Testing
+/tests
+phpunit.xml
+.phpunit.result.cache
+
+# Documentation
+/docs
+*.md
+!README.md
+
+# Docker files (not needed inside container)
+/docker
+Dockerfile
+docker-compose*.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+/coverage
+/.phpunit.cache
+
+# Build artifacts
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
