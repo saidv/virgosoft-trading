@@ -1,6 +1,8 @@
 import Pusher from 'pusher-js';
 import apiClient from './apiClient';
 
+Pusher.logToConsole = false;
+
 let pusherInstance = null;
 
 const getPusherInstance = (authToken = null) => {

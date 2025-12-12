@@ -2,8 +2,8 @@
   <div class="bg-white p-4 rounded-lg shadow-md">
     <h2 class="text-xl font-semibold mb-4">Order History</h2>
 
+    <div v-if="orderStore.error" class="text-red-500 py-4">Error: {{ orderStore.error.message }}</div>
     <div v-if="orderStore.loading" class="text-center py-4">Loading orders...</div>
-    <div v-else-if="orderStore.error" class="text-red-500 py-4">Error: {{ orderStore.error.message }}</div>
     <div v-else>
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
