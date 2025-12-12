@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import orderService from '../services/orderService';
+import { useToastStore } from './ToastStore';
 
 export const useOrderStore = defineStore('order', {
   state: () => ({
@@ -97,11 +98,27 @@ export const useOrderStore = defineStore('order', {
     // Action to handle OrderMatched event from Pusher
     async handleOrderMatched(data) {
         console.log('OrderStore: OrderMatched event received, refreshing data:', data);
+        
+        // Show toast notification
+        const toastStore = useToastStore();
+        const symbol = data.trade?.symbol || 'Unknown';
+        const amount = data.trade?.amount || '0';
+        const price = data.trade?.price || '0';
+        
+        toastStore.showToast(
+            `Order Matched! ${amount} ${symbol} @ ${price}`,
+            'success',
+            5000
+        );
+
         // Refetch user's orders to update their status and history
         await this.fetchOrders();
+        
         // Refetch order book for the matched symbol to reflect changes
-        // Assuming 'data' contains the symbol of the matched order
-        if (data.symbol) {
+        if (data.trade?.symbol) {
+            await this.fetchOrderBook(data.trade.symbol);
+        } else if (data.symbol) {
+             // Fallback if data structure is different
             await this.fetchOrderBook(data.symbol);
         }
     }

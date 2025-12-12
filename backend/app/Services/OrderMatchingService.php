@@ -217,9 +217,9 @@ class OrderMatchingService
         $seller->refresh();
 
         // Broadcast to buyer
-        broadcast(new OrderMatched($trade, $buyer->id))->toOthers();
+        broadcast(new OrderMatched($trade, $buyer->id));
 
         // Broadcast to seller
-        broadcast(new OrderMatched($trade, $seller->id))->toOthers();
+        broadcast(new OrderMatched($trade, $seller->id));
     }
 }
