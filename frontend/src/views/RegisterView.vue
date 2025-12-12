@@ -93,7 +93,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/AuthStore';
+import { useAuthStore } from '../stores/authStore';
 import { useToastStore } from '../stores/ToastStore';
 
 const router = useRouter();

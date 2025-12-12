@@ -12,7 +12,7 @@ app.use(createPinia())
 app.use(router)
 
 // Initialize authentication state
-import { useAuthStore } from './stores/AuthStore';
+import { useAuthStore } from './stores/authStore';
 const authStore = useAuthStore();
 authStore.initializeAuth();
 

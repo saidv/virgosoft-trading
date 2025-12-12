@@ -18,7 +18,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { nextTick } from 'vue';
-import { useAuthStore } from '../stores/AuthStore';
+import { useAuthStore } from '../stores/authStore';
 import { useToastStore } from '../stores/ToastStore';
 
 const router = useRouter();
