@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 min-h-screen;
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  /* Form inputs */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+           placeholder-gray-400 
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+
+  .input-error {
+    @apply border-danger-500 focus:ring-danger-500 focus:border-danger-500;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-4 py-2 font-semibold rounded-md transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white 
+           hover:bg-primary-700 
+           focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 
+           hover:bg-gray-300 
+           focus:ring-gray-500;
+  }
+
+  .btn-success {
+    @apply btn bg-success-600 text-white 
+           hover:bg-success-700 
+           focus:ring-success-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-600 text-white 
+           hover:bg-danger-700 
+           focus:ring-danger-500;
+  }
+
+  /* Trading specific */
+  .btn-buy {
+    @apply btn bg-buy text-white hover:opacity-90;
+  }
+
+  .btn-sell {
+    @apply btn bg-sell text-white hover:opacity-90;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  /* Labels */
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  /* Error text */
+  .error-text {
+    @apply text-sm text-danger-600 mt-1;
+  }
+
+  /* Price display */
+  .price-up {
+    @apply text-buy font-mono;
+  }
+
+  .price-down {
+    @apply text-sell font-mono;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
