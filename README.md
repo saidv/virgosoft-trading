@@ -116,7 +116,7 @@ Ensure you have the following installed:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/saidv/virgosoft-trading.git
-   cd trading-platform
+   cd virgosoft-trading
    ```
 
 2. **Docker Setup (Recommended)**
@@ -131,10 +131,16 @@ Ensure you have the following installed:
    # PUSHER_APP_KEY=your_app_key
    # PUSHER_APP_SECRET=your_app_secret
    # PUSHER_APP_CLUSTER=eu (or your cluster)
+   # PUSHER_HOST=api-eu.pusher.com
+   # PUSHER_PORT=443
+   # PUSHER_SCHEME=https
    
    # And in frontend/.env:
    # VITE_PUSHER_APP_KEY=your_app_key
    # VITE_PUSHER_APP_CLUSTER=eu
+   # VITE_PUSHER_PORT="443"
+   # VITE_PUSHER_SCHEME="https"
+   # VITE_PUSHER_APP_HOST="ws-eu.pusher.com"
    
    # Build and start containers
    docker-compose up -d --build
