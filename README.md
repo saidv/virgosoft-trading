@@ -205,6 +205,8 @@ Ensure you have the following installed:
 
 ---
 
+![Trading Platform Insights](../insights.png)
+
 ## 📁 Project Structure
 
 ```
