@@ -152,7 +152,7 @@ Ensure you have the following installed:
    DB_SEED=true docker-compose up -d --build
    ```
    
-   Or run manually:
+   Or fresh without demo data:
    ```bash
    docker-compose up -d --build
    ```
