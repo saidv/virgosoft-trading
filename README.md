@@ -142,11 +142,11 @@ Ensure you have the following installed:
    # VITE_PUSHER_SCHEME="https"
    # VITE_PUSHER_APP_HOST="ws-eu.pusher.com"
    
-   # Build and start containers
-   docker-compose up -d --build
+   # Build and start containers (includes demo data)
+   DB_SEED=true docker-compose up -d --build
    
-   # Run migrations and seeders
-   docker-compose exec app php artisan migrate --seed
+   # Or run manually:
+   # docker-compose up -d --build
    ```
 
 3. **Manual Setup (Alternative)**

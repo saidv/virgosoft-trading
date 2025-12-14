@@ -8,7 +8,6 @@ services:
     restart: unless-stopped
     working_dir: /var/www
     volumes:
-      - ./backend:/var/www
       - app_storage:/var/www/storage/app
       - app_logs:/var/www/storage/logs
     networks:
@@ -47,12 +46,10 @@ services:
     restart: unless-stopped
     ports:
       - "5432:5432"
-    env_file:
-      - ./backend/.env
     environment:
-      POSTGRES_DB: ${DB_DATABASE:-trading_platform}
-      POSTGRES_USER: ${DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+      POSTGRES_DB: trading_platform
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
