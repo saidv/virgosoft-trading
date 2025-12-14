@@ -126,8 +126,8 @@ Ensure you have the following installed:
    cp frontend/.env.example frontend/.env
    ```
    
-   ***Configure .env files with your credentials (Pusher, etc.)
-   ***IMPORTANT: You must set the following Pusher variables in backend/.env:
+   Configure .env files with your credentials (Pusher, etc.)
+   IMPORTANT: You must set the following Pusher variables in backend/.env:
    ```bash
    # PUSHER_APP_ID=your_app_id
    # PUSHER_APP_KEY=your_app_key
@@ -138,7 +138,7 @@ Ensure you have the following installed:
    # PUSHER_SCHEME=https
    ```
    
-   ***And in frontend/.env:
+   And in frontend/.env:
    ```bash
    # VITE_PUSHER_APP_KEY=your_app_key
    # VITE_PUSHER_APP_CLUSTER=eu
@@ -147,12 +147,12 @@ Ensure you have the following installed:
    # VITE_PUSHER_APP_HOST="ws-eu.pusher.com"
    ```
    
-   ***Build and start containers (includes demo data)
+   Build and start containers (includes demo data)
    ```bash
    DB_SEED=true docker-compose up -d --build
    ```
    
-   ***Or run manually:
+   Or run manually:
    ```bash
    docker-compose up -d --build
    ```
