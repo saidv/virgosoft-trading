@@ -126,8 +126,9 @@ Ensure you have the following installed:
    cp frontend/.env.example frontend/.env
    ```
    
-   # Configure .env files with your credentials (Pusher, etc.)
-   # IMPORTANT: You must set the following Pusher variables in backend/.env:
+   ***Configure .env files with your credentials (Pusher, etc.)
+   ***IMPORTANT: You must set the following Pusher variables in backend/.env:
+   ```bash
    # PUSHER_APP_ID=your_app_id
    # PUSHER_APP_KEY=your_app_key
    # PUSHER_APP_SECRET=your_app_secret
@@ -135,20 +136,23 @@ Ensure you have the following installed:
    # PUSHER_HOST=api-eu.pusher.com
    # PUSHER_PORT=443
    # PUSHER_SCHEME=https
+   ```
    
-   # And in frontend/.env:
+   ***And in frontend/.env:
+   ```bash
    # VITE_PUSHER_APP_KEY=your_app_key
    # VITE_PUSHER_APP_CLUSTER=eu
    # VITE_PUSHER_PORT="443"
    # VITE_PUSHER_SCHEME="https"
    # VITE_PUSHER_APP_HOST="ws-eu.pusher.com"
+   ```
    
-   # Build and start containers (includes demo data)
+   ***Build and start containers (includes demo data)
    ```bash
    DB_SEED=true docker-compose up -d --build
    ```
    
-   # Or run manually:
+   ***Or run manually:
    ```bash
    docker-compose up -d --build
    ```
