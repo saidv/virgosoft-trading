@@ -124,6 +124,7 @@ Ensure you have the following installed:
    # Copy environment files
    cp backend/.env.example backend/.env
    cp frontend/.env.example frontend/.env
+   ```
    
    # Configure .env files with your credentials (Pusher, etc.)
    # IMPORTANT: You must set the following Pusher variables in backend/.env:
@@ -143,10 +144,13 @@ Ensure you have the following installed:
    # VITE_PUSHER_APP_HOST="ws-eu.pusher.com"
    
    # Build and start containers (includes demo data)
+   ```bash
    DB_SEED=true docker-compose up -d --build
+   ```
    
    # Or run manually:
-   # docker-compose up -d --build
+   ```bash
+   docker-compose up -d --build
    ```
 
 3. **Manual Setup (Alternative)**
